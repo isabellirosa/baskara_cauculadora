@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(232, 255, 214);
+            margin-top: 100px;
+            text-align: center;
+        }
+        input{
+            width: 25%;
+        }
+        #resultado{
+            height: 100px;
+            margin-bottom: 50px;
+        }
+        h2{
+            display: inline;
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        function click_calcular() {
+      let ValorA = document.getElementById("va").value;
+      let ValorB = document.getElementById("vb").value;
+      let ValorC = document.getElementById("vc").value;
+      if (ValorA == ""){
+        alert("Informe o valor a");
+      }
+      else if (ValorB == ""){
+        alert("Informe o valor b");
+      }
+      else if (ValorC == ""){
+        alert("Informe o valor c");
+      }
+      else{
+        let delta = (Number(ValorB))*(Number(ValorB))+(-4*Number(ValorA)*Number(ValorC));
+        if(delta<0){
+            alert(`Não foi possivel calcular, o delta é negativo.`)
+        }
+        else if(ValorA==0){
+            alert(`Não foi possivel calcular porque a=0.`)  
+        }
+        else{
+        let x1= ((-ValorB+Math.sqrt(delta))/2*ValorA); 
+        let x2= ((-ValorB-Math.sqrt(delta))/2*ValorA); 
+            document.getElementById("resultado").innerHTML = ` <h1> RESULTADO: </h1> <h2>x1=${x1}</h2>  <h2>x2=${x2}</h2>`;
+        }
+    }
+}
+
+    function click_limpar() {
+      document.getElementById("va").value = "";
+      document.getElementById("vb").value = "";
+      document.getElementById("vc").value = "";
+    document.getElementById("resultado").innerHTML = "";
+    }
+
+    </script>
+</head>
+<body>
+    <h1>CAUCULADORA DE BASKARA</h1>
+    <form>
+        <div>
+            <label for="va">Valor a:</label>
+            <input type="number" name="" id="va">
+        </div>
+        <div>
+            <label for="vb">Valor b:</label>
+            <input type="number" name="" id="vb">
+        </div>
+        <div>
+            <label for="vc">Valor c:</label>
+            <input type="number" name="" id="vc">
+        </div>
+
+        <div id="resultado">
+
+        </div>
+
+    <div>
+        <input type="button" value="Calcular" onclick="click_calcular();">
+  
+        <input type="button" value="Limpar" onclick="click_limpar();">
+
+      </div>
+    </form>
+</body>
+</html>
